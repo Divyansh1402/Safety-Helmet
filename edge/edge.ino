@@ -14,7 +14,7 @@ const char * host = "192.168.169.167";
 const uint16_t port = 5000;
 
 //id
-const int helmet_id = 1;
+int hhelmet_id = 1;
  
 //MQ135 gas_sensor = MQ135(PIN_MQ135);
 DHT dht(DHT11PIN, DHTTYPE);
@@ -50,14 +50,50 @@ void loop()
       int t = (int)(dht.readTemperature());
       Serial.println(h);
       Serial.println(t);
+     /// std::string *n = new std::string("naman");
+      //fog.print("naman");
+
+      char msg[20];
+      int i = 0;
       
-      fog.println(helmet_id);
-      fog.println(gasLevel);
-     //s fog.print(" ");
-      fog.println(h);
-      //fog.print(" ");
-      fog.println(t);
-     // fog.println(" ");
+      while(h != 0){
+        int digit = h%10;
+        msg[i] = digit+'0';
+        i++;
+        h /= 10;
+      }
+      msg[i] = ' ';
+      i++;
+
+      while(t != 0){
+        int digit = t%10;
+        msg[i] = digit+'0';
+        i++;
+        t /= 10;
+      }
+      msg[i] = ' ';
+      i++;
+      
+      while(gasLevel != 0){
+        int digit = gasLevel%10;
+        msg[i] = digit+'0';
+        i++;
+        gasLevel /= 10;
+      }
+      msg[i] = ' ';
+      i++;
+
+      int helmet_id = hhelmet_id;
+      while(helmet_id != 0){
+        int digit = helmet_id%10;
+        msg[i] = digit+'0';
+        i++;
+        helmet_id /= 10;
+      }
+      msg[i] = ' ';
+      
+      fog.print(msg);
+      
       fog.stop();
     }
  
