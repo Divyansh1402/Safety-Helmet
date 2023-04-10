@@ -7,11 +7,12 @@ std::string data;
 bool changed = false;
 
 void updateValue(){
-    Connection *conn = new Connection(AF_INET, 5000, "192.168.169.167");
+    Connection *conn = new Connection(AF_INET, 5000, "192.168.128.168");
     conn->init();
 	while(1){
     	data = conn->recv();
-		std::cout << data << std::endl;
+		changed = true;
+		std::cout << "Data: " << data << std::endl;
 	}
 }
 

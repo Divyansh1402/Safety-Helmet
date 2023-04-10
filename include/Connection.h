@@ -23,6 +23,7 @@ class Connection
         void init();
         //accepting and socket and updating the values
         std::string recv();
+        std::string crecv();
 
     private:
         //for socket internals

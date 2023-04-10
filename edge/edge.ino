@@ -8,10 +8,10 @@
 #define DHTTYPE DHT11
 
 //network
-const char* ssid = "lEr";
-const char* password =  "iraentel";
-const char * host = "192.168.169.167";
-const uint16_t port = 5000;
+const char* ssid = "ientel";
+const char* password =  "nomonvorma";
+const char * host = "192.168.128.168";
+const uint16_t port = 6000;
 
 //id
 int hhelmet_id = 1;

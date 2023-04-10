@@ -44,6 +44,7 @@ std::string Connection::recv(){
         //if (buffer[0] == '\0') return connectionData;
         if (n < 0 && DEBUG){ std::cout << "Reading error" << std::endl; }
 
+        std::cout << "Raw Data Received from sensor: ";
         for(auto ii : buffer){
             //if (ii == '\0') { break; }
             temp += ii;
@@ -56,6 +57,24 @@ std::string Connection::recv(){
     for(auto ii : buffer){
         if (ii == ' ') count++;
         if (count == 4) break;
+        connectionData += ii;
+    }
+    return connectionData;
+}
+
+std::string Connection::crecv(){
+    char buffer[256];
+    std::string connectionData = "";
+    int nSocket_ = accept(socketId_, (struct sockaddr*)&caddr_, &caddrlen_);
+    std::string temp;
+        if (nSocket_ < 0 && DEBUG){ std::cout << "Client not accepted" << std::endl; }
+        bzero(buffer,256);
+
+        int n = read(nSocket_, buffer, 256);
+        //if (buffer[0] == '\0') return connectionData;
+        if (n < 0 && DEBUG){ std::cout << "Reading error" << std::endl; }
+
+    for(auto ii : buffer){
         connectionData += ii;
     }
     return connectionData;

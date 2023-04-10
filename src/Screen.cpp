@@ -33,10 +33,9 @@ void Screen::readConfig(){
 
 void Screen::readData(std::string & data, bool & changed){
     if (changed){
-        //
         std::string temp = "";
         int count = 0;
-        int arr[4];
+        int arr[4] = {0};
         for(int c_d : data){
             if (c_d == ' '){ 
                 if (isInt(temp)){ arr[count] = stoi(temp); }
@@ -45,16 +44,34 @@ void Screen::readData(std::string & data, bool & changed){
             else{ temp += c_d;}
             if(count==4) break;
         }
+        if (arr[3] == 0){ arr[3] = stoi(temp); }
         //updating the values
         dht_[arr[3]] = {arr[0],arr[1]};
         mqtt_[arr[3]] = arr[2];
+        /*
+        for(auto h : helmet_){
+            std::cout << h << "n" << mqtt_[h] << " " <<
+            dht_[h].first << " " << dht_[h].second << std::endl;
+        }
+        */
         changed = false;
     }
 }
 
 void Screen::display(){
+    std::cout << "Helmet Status" << std::endl;
     for(auto h : helmet_){
         std::cout << h << " " << mqtt_[h] << " " <<
           dht_[h].first << " " << dht_[h].second << std::endl;
+    }
+    std::cout << "****************************" << std::endl;
+    std::cout << std::endl;
+    //updating the external file
+    std::ofstream fout;
+    fout.open("hstatus.dat");
+    for(auto h : helmet_){
+        fout << h << " ";
+        if (mqtt_[h] > 300) fout << 0 << std::endl;
+        else fout << 1 << std::endl;
     }
 }
