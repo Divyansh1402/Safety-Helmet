@@ -1,46 +1,34 @@
 #include <ESP8266WiFi.h>
 #include <MQ135.h>
 #include <DHT.h>
-
-
 #define PIN_MQ135 A0
 #define DHT11PIN 2
 #define DHTTYPE DHT11
-
 //network
 const char* ssid = "ientel";
 const char* password =  "nomonvorma";
 const char * host = "192.168.128.168";
 const uint16_t port = 6000;
-
 //id
 int hhelmet_id = 1;
- 
 //MQ135 gas_sensor = MQ135(PIN_MQ135);
 DHT dht(DHT11PIN, DHTTYPE);
 
 void setup()
 {
- 
   Serial.begin(9600);
- 
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
     Serial.println("Connecting...");
   }
- 
    Serial.println("Helmet connected to the Network");
 }
 
- 
 void loop()
 {
     WiFiClient fog;
- 
-    if (!fog.connect(host, port)) {
-      Serial.println("either host error or port error");
-    }
+    if (!fog.connect(host, port)) { Serial.println("either host error or port error"); }
     else{
       Serial.println("Connected to the fog node");
       
@@ -50,12 +38,9 @@ void loop()
       int t = (int)(dht.readTemperature());
       Serial.println(h);
       Serial.println(t);
-     /// std::string *n = new std::string("naman");
       //fog.print("naman");
-
       char msg[20];
       int i = 0;
-      
       while(h != 0){
         int digit = h%10;
         msg[i] = digit+'0';

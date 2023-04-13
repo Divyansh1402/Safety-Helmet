@@ -42,7 +42,6 @@ void update(){
 	cout << setfill('*') << setw(2*colWidth) << "*" << endl;
 	bool isSafe = true;
 
-
 	while(getline(fin,temp)){
 		char hid = temp[0];
 		char hstatus = temp[2];

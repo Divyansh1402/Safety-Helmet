@@ -1,5 +1,4 @@
 #pragma once
-
 #include <poll.h>
 #include <netdb.h> 
 #include <stdio.h>
@@ -10,9 +9,7 @@
 #include <sys/types.h> 
 #include <sys/socket.h>
 #include <netinet/in.h>
-
 #define DEBUG 1
-
 //Connection established using socket
 class Connection
 {
@@ -24,7 +21,6 @@ class Connection
         //accepting and socket and updating the values
         std::string recv();
         std::string crecv();
-
     private:
         //for socket internals
         int family_, port_;

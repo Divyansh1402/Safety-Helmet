@@ -11,6 +11,7 @@ server_socket.listen(0)
 conn, address = server_socket.accept()
 for i in range(4):
     p = conn.recv(1024)
+    print(p)
     port = 5000
 
     message = " 71 240 1 l l"

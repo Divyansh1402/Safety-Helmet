@@ -6,7 +6,7 @@ import os
 host = '192.168.128.168'
 port = 5000
 
-message = " 10 300 3 l l"
+message = " 10 100 3 l l"
 count = 10;
 while(True):
     dat = str(count)+message

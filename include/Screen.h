@@ -1,16 +1,13 @@
 #pragma once 
-
 #include <fstream>
 #include <vector>
 #include <map>
-
 class Screen
 {
     public:
         void readConfig();
         void readData(std::string &, bool&);
         void display();
-
     private:
         int zone_;
         std::vector<int> helmet_;
