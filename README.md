@@ -56,10 +56,11 @@ cd cloud
 ## HardWare Connections
 
 ![Hardware](./images/hardware1.png)
-![Hardware](./images/hardware2.png)
 
 ## Screenshots
 
 ![Fog Node Logs](./images/logs.png)
+
 ![Fog Node Display](./images/fdisplay.png)
+
 ![Cloud Node](./images/cdisplay.png)
