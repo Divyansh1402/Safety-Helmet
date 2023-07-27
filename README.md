@@ -59,8 +59,14 @@ cd cloud
 
 ## Screenshots
 
+### Fog NOde Logs
+
 ![Fog Node Logs](./images/logs.png)
 
+### Fog Node Display
+
 ![Fog Node Display](./images/fdisplay.png)
+
+### Cloud Node
 
 ![Cloud Node](./images/cdisplay.png)
